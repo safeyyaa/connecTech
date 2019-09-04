@@ -1,0 +1,37 @@
+[
+  {
+    "emp_username": "safeya1",
+    "emp_salary": "4444",
+    "housing": "444.4",
+    "educations": "399.96",
+    "totalDeduct": "844.36"
+  },
+  {
+    "emp_username": "meera1",
+    "emp_salary": "5555",
+    "housing": "555.5",
+    "educations": "499.95",
+    "totalDeduct": "1055.45"
+  },
+  {
+    "emp_username": "amjad1",
+    "emp_salary": "2222",
+    "housing": "222.2",
+    "educations": "199.98",
+    "totalDeduct": "422.18"
+  },
+  {
+    "emp_username": "jawaher1",
+    "emp_salary": "6666",
+    "housing": "666.6",
+    "educations": "599.94",
+    "totalDeduct": "1266.54"
+  },
+  {
+    "emp_username": "asayel1",
+    "emp_salary": "7777",
+    "housing": "777.7",
+    "educations": "699.93",
+    "totalDeduct": "1477.63"
+  }
+]
