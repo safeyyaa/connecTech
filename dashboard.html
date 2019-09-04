@@ -30,15 +30,25 @@
           </div>
         <div id="PageContent">
             <div class="sidebar">
-                <a class="active" href="#Dashboard" id="Profile"> Profile</a>
-                <a href="#Dashboard" id="ViewEmployee">View Employee</a>
+                <a class="active" href="#" id="Profile" onclick="viewEmpDetails()"> Profile</a>
+                <a href="#" id="ViewEmployee" onclick="viewEmployee()">View Employee</a>
                 <a href="#Dashboard" id="ViewCandidate">View Candidate</a>
-                <a href="#Dashboard" id="ViewRequest">View Request</a>
-                <a href="#Dashboard" id="Payslip">Payslip</a>
+                <a href="#Dashboard" id="ViewRequest" onclick="requestLetters()">View Request</a>
+                <a href="#Dashboard" id="Payslip" onclick="viewPayslip()">Payslip</a>
             </div>
           
         </div>
-        <div class="content">
+        <div class="content" id="dashboard_content">
+            <div id= "searchBoxId" class="searchBox">
+                <input onkeyup="search()" id="searchInput" placeholder="Search" type="text"/>
+            </div>
+            <div id="addRequest">
+                <select id="requestSelect" class="requestSelect" onchange="requestLetters()">
+                    <option value="default">Select Letter Type</option>
+                    <option value="housing">Housing</option>
+                    <option value="bank">Bank</option>
+                  </select>
+            </div>
             ..
           </div>
        <div id="main"></div>
@@ -76,4 +86,5 @@
           </footer>
         
     </body>
+    <script src="dashboard.js"></script>
 </html>
