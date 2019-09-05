@@ -45,6 +45,9 @@ body {
   box-sizing: border-box;
   display: block;
 }
+#dropdownContentDiv {
+  display: none;
+}
 
 #searchBoxId {
   display: none;

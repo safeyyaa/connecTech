@@ -34,8 +34,9 @@
           </div>
         <div id="PageContent">
             <div class="sidebar">
+                <a href="#" id="MyRequest" onclick="requestLetters()">My Request</a>
                 <a href="#" id="ViewRequest" onclick="requestLetters()">View Request</a>
-                <a href="#" id="Profile" onclick="viewEmpDetails()"> Profile</a>
+                <a href="#" id="Profile" onclick="viewEmpDetails()">Profile</a>
                 <a href="#" id="ViewEmployee" onclick="viewEmployee()">View Employee</a>
                 <a href="#" id="ViewCandidate">View Candidate</a>
                 <a href="#" id="Payslip" onclick="viewPayslip()">Payslip</a>
@@ -47,10 +48,32 @@
                 <input onkeyup="fillterdProducts()" id="searchInput" placeholder="Search" type="text"/>
             </div>
             
+            <div class="dropdown" id="dropdownContentDiv">
+                <label id="dropdownContent" class="dropbtn"><b>Sort:</b></label>
+                <div class="dropdown-content">
+                  <a id="employee_id" href="#" onclick="sortById()">Id</a>
+                  <a id="employee_salary" href="#" onclick="sortByPosition()">Position</a>
+                  <a id="employee_age" href="#" onclick="sortByDep()">Department</a>
+                </div>
+              </div>
+
         <div id="addRequest">
             <div id="penddingRequest" >
+              
 
             </div>
+            <div id="penddingRequestContent" >
+              
+
+              </div>
+              <div id="approvedRequest" >
+              
+
+                </div>
+                <div id="approvedRequestContent" >
+                  
+    
+                  </div>
               <select id="requestSelect" class="requestSelect" onchange="requestLetters()">
                   <option value="default">Select Letter Type</option>
                   <option value="housing">Housing</option>

@@ -24,8 +24,9 @@ promise
     }
     if (status == "Regular_Emp") {
       document.getElementById("ViewCandidate").style.display = "none";
-      document.getElementById("ViewRequest").innerHTML = "Add Request";
+      document.getElementById("MyRequest").innerHTML = "My Request";
       document.getElementById("ViewEmployee").style.display = "none";
+      document.getElementById("ViewRequest").style.display = "none";
     }
   });
 
@@ -48,6 +49,9 @@ promise
   });
 
 function viewEmpDetails() {
+  // document.getElementById("container").innerHTML = "";
+  document.getElementById("dropdownContentDiv").style.display = "none";
+  document.getElementById("searchBoxId").style.display = "none";
   document.getElementById("addRequest").style.display = "none";
   var emp;
   var empName = localStorage.getItem("LoggedInUser");
@@ -88,7 +92,7 @@ function getJobDetails(data) {
   return (
     "<b> Job Details </b> <br> <br> " +
     "Hire Date: " +
-    data.HigherD +
+    data.hiringD +
     "<br> <br>" +
     "Department: " +
     data.Department +
@@ -105,33 +109,76 @@ function getJobDetails(data) {
   );
 }
 function requestLetters() {
+  document.getElementById("dropdownContentDiv").style.display = "none";
+  document.getElementById("searchBoxId").style.display = "none";
   document.getElementById("addRequest").style.display = "block";
   document.getElementById("container").innerHTML = "";
   var selected = document.getElementById("requestSelect").value;
   if (selected == "housing" || selected == "bank") {
     var content = document.createElement("button");
     content.setAttribute("class", "requestBtn");
-    content.setAttribute("onclick", "addRequest()");
+    content.setAttribute("id", "requestBtn");
+    content.setAttribute("onclick", `addRequest("${selected}")`);
     content.innerHTML = "Add Request";
     document.getElementById("dashboard_content").appendChild(content);
   }
 }
-function addRequest() {
-  var selected = document.getElementById("requestSelect").value;
-  if (selected == "housing") {
-    console.log("get ", localStorage.getItem("LoggedInUser"));
-    localStorage.setItem(
-      localStorage.getItem("LoggedInUser"),
-      parseInt(localStorage.getItem(localStorage.getItem("LoggedInUser"))) + 1
-    );
+function addRequest(selected) {
+  console.log(selected);
+  // var selected = document.getElementById("requestSelect").value;
+  var user = localStorage.getItem("LoggedInUser");
+  var requests = localStorage.getItem("requests")
+    ? JSON.parse(localStorage.getItem("requests"))
+    : {};
+  var userRequest = requests[user] !== undefined ? requests[user] : {};
+  userRequest[selected] = false;
+  requests[user] = userRequest;
+  console.log("obj ", userRequest);
+
+  localStorage.setItem("requests", JSON.stringify(requests));
+
+  var penddingResult = "";
+  document.getElementById("penddingRequest").innerHTML =
+    "<b>Pendding Requests</b>";
+  var penddingRequest = document.getElementById("penddingRequestContent");
+  var requests = localStorage.getItem("requests")
+    ? JSON.parse(localStorage.getItem("requests"))
+    : {};
+  var user = localStorage.getItem("LoggedInUser");
+  var userRequest = requests[user];
+  console.log("R", userRequest);
+
+  if (userRequest.housing == false) {
+    penddingResult += "Request for <b>Housing </b><br/>";
   }
+  if (userRequest.bank == false) {
+    penddingResult += "Request for <b>Bank </b><br/>";
+  }
+
+  penddingRequest.innerHTML = penddingResult;
+
+  var approvedResult = "";
+  var approvedRequest = document.getElementById("approvedRequestContent");
+  document.getElementById("approvedRequest").innerHTML =
+    "<b>Approved Requests</b>";
+  if (userRequest.housing == true) {
+    approvedResult += "Request for <b>Housing </b><br/>";
+  }
+  if (userRequest.bank == true) {
+    approvedResult += "Request for <b>Bank </b><br/>";
+  }
+  // penddingRequest.append(value);
+
+  approvedRequest.innerHTML = approvedResult;
 }
 function penddingRequest() {}
 function viewRequestedLetters() {}
 
 function viewEmployee() {
-  // document.getElementById("dashboard_content").innerHTML = "";
   document.getElementById("searchBoxId").style.display = "block";
+  document.getElementById("dropdownContentDiv").style.display = "block";
+  document.getElementById("addRequest").style.display = "none";
+  // document.getElementById("requestBtn").style.display = "none";
   // var searchForm = document.createElement("form");
   // searchForm.setAttribute("class", "searchBox");
   // var searchBar = document.createElement("input");
@@ -147,6 +194,9 @@ function viewEmployee() {
   createTables(personalDetails);
 }
 function viewPayslip() {
+  document.getElementById("addRequest").style.display = "block";
+  document.getElementById("dropdownContentDiv").style.display = "none";
+  document.getElementById("searchBoxId").style.display = "none";
   document.getElementById("addRequest").style.display = "none";
   var empName = localStorage.getItem("LoggedInUser");
   for (pData of payslipDetails) {
@@ -181,6 +231,7 @@ function fillterdProducts() {
     );
   }
 }
+
 function viewCandidates() {}
 
 function createTables(records) {
@@ -220,4 +271,57 @@ function createRow(record) {
     row.appendChild(column);
   }
   return row;
+}
+function sortById() {
+  document.getElementById("container").innerHTML = "";
+  var employeeDataIdCopy = [...personalDetails];
+  console.log(employeeDataIdCopy);
+
+  createTables(
+    employeeDataIdCopy.sort(function(a, b) {
+      return a.emp_id - b.emp_id;
+    })
+  );
+}
+
+function sortByExpe() {
+  document.getElementById("container").innerHTML = "";
+  var employeeDataSalaryCopy = [...employeeData];
+  createTables(
+    employeeDataSalaryCopy.sort((a, b) =>
+      a.employee_salary > b.employee_salary
+        ? 1
+        : b.employee_salary > a.employee_salary
+        ? -1
+        : 0
+    )
+  );
+}
+
+function sortByAge() {
+  document.getElementById("container").innerHTML = "";
+  var employeeDataAgeCopy = [...employeeData];
+  createTables(
+    employeeDataAgeCopy.sort(function(a, b) {
+      return a.employee_age.localeCompare(b.employee_age);
+    })
+  );
+}
+function sortByPosition() {
+  document.getElementById("container").innerHTML = "";
+  var employeeDataAgeCopy = [...personalDetails];
+  createTables(
+    employeeDataAgeCopy.sort(function(a, b) {
+      return a.emp_position.localeCompare(b.emp_position);
+    })
+  );
+}
+function sortByDep() {
+  document.getElementById("container").innerHTML = "";
+  var employeeDataAgeCopy = [...personalDetails];
+  createTables(
+    employeeDataAgeCopy.sort(function(a, b) {
+      return a.Department.localeCompare(b.Department);
+    })
+  );
 }
