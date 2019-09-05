@@ -8,6 +8,25 @@ promise
   })
   .then(data => {
     personalDetails = data;
+    // viewEmpDetails();
+    for (v of personalDetails) {
+      if (localStorage.getItem("LoggedInUser") == v.emp_username) {
+        var employeeName = v.emp_name;
+      }
+    }
+    document.getElementById("user").innerHTML = employeeName;
+    var status;
+    var empName = localStorage.getItem("LoggedInUser");
+    for (value of personalDetails) {
+      if (value.emp_username == empName) {
+        status = value.status;
+      }
+    }
+    if (status == "Regular_Emp") {
+      document.getElementById("ViewCandidate").style.display = "none";
+      document.getElementById("ViewRequest").innerHTML = "Add Request";
+      document.getElementById("ViewEmployee").style.display = "none";
+    }
   });
 
 var promise = fetch("./jobDetails.json");
@@ -29,11 +48,11 @@ promise
   });
 
 function viewEmpDetails() {
+  document.getElementById("addRequest").style.display = "none";
   var emp;
-  //   var empName = localStorage.getItem("username");
+  var empName = localStorage.getItem("LoggedInUser");
   for (pData of personalDetails) {
-    if (pData.emp_name == "Safeya") {
-      //   emp = JSON.parse(pData);
+    if (pData.emp_username == empName) {
       emp = getPersonalDetails(pData);
       for (jData of jobDetails) {
         if (jData.emp_username == pData.emp_username) {
@@ -41,7 +60,7 @@ function viewEmpDetails() {
         }
       }
     }
-    document.getElementById("dashboard_content").innerHTML = emp;
+    document.getElementById("container").innerHTML = emp;
   }
 }
 function getPersonalDetails(data) {
@@ -87,20 +106,32 @@ function getJobDetails(data) {
 }
 function requestLetters() {
   document.getElementById("addRequest").style.display = "block";
+  document.getElementById("container").innerHTML = "";
   var selected = document.getElementById("requestSelect").value;
-  console.log(selected);
-  if (selected == "housing") {
-    document.getElementById("dashboard_content").innerHTML = "Hi";
+  if (selected == "housing" || selected == "bank") {
+    var content = document.createElement("button");
+    content.setAttribute("class", "requestBtn");
+    content.setAttribute("onclick", "addRequest()");
+    content.innerHTML = "Add Request";
+    document.getElementById("dashboard_content").appendChild(content);
   }
-  // document.getElementById("addRequest").style.display = "none";
 }
-
+function addRequest() {
+  var selected = document.getElementById("requestSelect").value;
+  if (selected == "housing") {
+    console.log("get ", localStorage.getItem("LoggedInUser"));
+    localStorage.setItem(
+      localStorage.getItem("LoggedInUser"),
+      parseInt(localStorage.getItem(localStorage.getItem("LoggedInUser"))) + 1
+    );
+  }
+}
+function penddingRequest() {}
 function viewRequestedLetters() {}
 
 function viewEmployee() {
   // document.getElementById("dashboard_content").innerHTML = "";
   document.getElementById("searchBoxId").style.display = "block";
-  createTables(personalDetails);
   // var searchForm = document.createElement("form");
   // searchForm.setAttribute("class", "searchBox");
   // var searchBar = document.createElement("input");
@@ -109,17 +140,18 @@ function viewEmployee() {
   // searchBar.setAttribute("id", "searchBarInput");
   // searchBar.setAttribute("onkeyup", "fillterdProducts()");
   // searchForm.appendChild(searchBar);
-  // document.getElementById("dashboard_content").appendChild(searchForm);
+  // document.getElementById("searchBoxId").appendChild(searchForm);
   // var displayContent = document.createElement("div");
   // displayContent.setAttribute("class", "content");
+  document.getElementById("container").innerHTML = "";
+  createTables(personalDetails);
 }
 function viewPayslip() {
-  console.log(payslipDetails);
-  document.getElementById("dashboard_content").innerHTML = "";
-  //   var empName = localStorage.getItem("username");
+  document.getElementById("addRequest").style.display = "none";
+  var empName = localStorage.getItem("LoggedInUser");
   for (pData of payslipDetails) {
-    if (pData.emp_username == "safeya1") {
-      document.getElementById("dashboard_content").innerHTML =
+    if (pData.emp_username == empName) {
+      document.getElementById("container").innerHTML =
         "<b> Payslip Details </b> <br> <br> " +
         "Total Salary: " +
         pData.emp_salary +
@@ -134,6 +166,19 @@ function viewPayslip() {
         pData.totalDeduct +
         " AED <br> <br>";
     }
+  }
+}
+
+function fillterdProducts() {
+  var search_input = document.getElementById("searchInput").value;
+  document.getElementById("container").innerHTML = "";
+  if (search_input != undefined) {
+    createTables(
+      personalDetails.filter(value => {
+        var lowerCaseProduct = value.emp_name.toLowerCase();
+        return lowerCaseProduct.includes(search_input);
+      })
+    );
   }
 }
 function viewCandidates() {}
@@ -154,7 +199,7 @@ function createTables(records) {
   for (let record of records) {
     table.appendChild(createRow(record));
   }
-  document.getElementById("dashboard_content").appendChild(table);
+  document.getElementById("container").appendChild(table);
 }
 
 function createHeading(record) {

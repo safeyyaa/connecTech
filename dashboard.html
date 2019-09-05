@@ -19,6 +19,10 @@
             <div class="logo"><center>
               <img alt="logo" src="Screen Shot 2019-09-04 at 11.26.00 AM.png">
             </center></div>
+            <div class="welcomeMessage">
+                <i style="cursor: pointer;" onclick="logout()" class="material-icons">person_outline</i>
+                <span id="user"></span>
+            </div>
         
             
             
@@ -30,26 +34,30 @@
           </div>
         <div id="PageContent">
             <div class="sidebar">
-                <a class="active" href="#" id="Profile" onclick="viewEmpDetails()"> Profile</a>
+                <a href="#" id="ViewRequest" onclick="requestLetters()">View Request</a>
+                <a href="#" id="Profile" onclick="viewEmpDetails()"> Profile</a>
                 <a href="#" id="ViewEmployee" onclick="viewEmployee()">View Employee</a>
-                <a href="#Dashboard" id="ViewCandidate">View Candidate</a>
-                <a href="#Dashboard" id="ViewRequest" onclick="requestLetters()">View Request</a>
-                <a href="#Dashboard" id="Payslip" onclick="viewPayslip()">Payslip</a>
+                <a href="#" id="ViewCandidate">View Candidate</a>
+                <a href="#" id="Payslip" onclick="viewPayslip()">Payslip</a>
             </div>
           
         </div>
         <div class="content" id="dashboard_content">
             <div id= "searchBoxId" class="searchBox">
-                <input onkeyup="search()" id="searchInput" placeholder="Search" type="text"/>
+                <input onkeyup="fillterdProducts()" id="searchInput" placeholder="Search" type="text"/>
             </div>
-            <div id="addRequest">
-                <select id="requestSelect" class="requestSelect" onchange="requestLetters()">
-                    <option value="default">Select Letter Type</option>
-                    <option value="housing">Housing</option>
-                    <option value="bank">Bank</option>
-                  </select>
+            
+        <div id="addRequest">
+            <div id="penddingRequest" >
+
             </div>
-            ..
+              <select id="requestSelect" class="requestSelect" onchange="requestLetters()">
+                  <option value="default">Select Letter Type</option>
+                  <option value="housing">Housing</option>
+                  <option value="bank">Bank</option>
+                </select>
+          </div>
+          <div id="container"></div>
           </div>
        <div id="main"></div>
         <footer>
@@ -87,4 +95,5 @@
         
     </body>
     <script src="dashboard.js"></script>
+    <script src="index.js"></script>
 </html>

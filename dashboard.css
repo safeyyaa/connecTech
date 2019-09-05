@@ -41,7 +41,6 @@ body {
   float: left;
   padding: 35px;
   width: 60%;
-  height: 100%;
   text-align: center;
   box-sizing: border-box;
   display: block;
@@ -51,10 +50,25 @@ body {
   display: none;
 }
 
-#header .welcomeBox {
-  float: left;
+.requestBtn {
+  position: absolute;
+  font-family: "helveticaneuemedium";
+  left: 50%;
+  text-align: center;
+  background-color: rgba(64, 131, 155, 0.646);
+  color: white;
+  font-size: 16px;
+  padding: 10px 40px;
+  border: solid white 1px;
+  border-radius: 8px;
+  margin-top: 20px;
+  left: 20px;
+  width: 100%;
+}
+
+#header .welcomeMessage {
+  float: right;
   width: 20%;
-  padding: 30px;
   height: 100%;
   font: 16px sans-serif;
   text-align: center;
