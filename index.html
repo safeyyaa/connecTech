@@ -4,6 +4,7 @@
     <title>ConnecTech</title>
     <link rel="stylesheet" href="./index.css" />
     <script src="index.js"></script>
+    <script src="login.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -14,7 +15,10 @@
       href="https://fonts.googleapis.com/css?family=Righteous&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      href="https://fonts.googleapis.com/css?family=Monda&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/w3css/3/w3.css" />
     <link
       rel="stylesheet"
@@ -69,25 +73,25 @@
           </div>
 
           <div class="container">
-            <label id="usernameLabel" for="uname"><b>Username</b></label>
+            <label for="uname"><b>Username</b></label>
             <input
-              id="usernameInput"
+              id="username"
               type="text"
               placeholder="Enter Username"
               name="uname"
               required
             />
 
-            <label id="passwordLabel" for="psw"><b>Password</b></label>
+            <label for="psw"><b>Password</b></label>
             <input
-              id="passwordInput"
+              id="password"
               type="password"
               placeholder="Enter Password"
               name="psw"
               required
             />
 
-            <button type="submit" onclick="validateLogin()">Login</button>
+            <button type="submit" onclick="doLogin()">Login</button>
             <label>
               <input type="checkbox" checked="checked" name="remember" />
               Remember me
@@ -102,7 +106,7 @@
             >
               Cancel
             </button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <div id="msg"></div>
           </div>
         </form>
       </div>
@@ -110,6 +114,13 @@
 
     <section>
       <nav>
+        <div id="welcome" style="font-family: 'Monda', sans-serif;">
+          <marquee behavior="“scroll”" direction="“left”"
+            >WELCOME To ConnecTech ...</marquee
+          >
+        </div>
+        <div id="gif"><img id="imgGif" src="design.gif" /></div>
+        <div id="navImage" class="Navimage"></div>
         <div id="navHeader"></div>
         <div id="container"></div>
       </nav>
@@ -134,7 +145,8 @@
           <ul>
             <li><a href="“#”">Employee Managemnt</a></li>
             <li><a href="“#”">View profile</a></li>
-            <li><a href="“#”">news</a></li>
+            <li><a href="“#”">View Payslip</a></li>
+            <li><a href="“#”">Add/View Request</a></li>
           </ul>
         </li>
         <li>
