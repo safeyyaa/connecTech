@@ -1,0 +1,32 @@
+[
+  {
+    "candidate_name": "Maryam",
+    "candidate_age": "20",
+    "DOB": "14/03/2000",
+    "experience": "Testing"
+  },
+  {
+    "candidate_name": "Salem",
+    "candidate_age": "26",
+    "DOB": "03/11/1993",
+    "experience": "Coding"
+  },
+  {
+    "candidate_name": "Asma",
+    "candidate_age": "27",
+    "DOB": "26/09/1992",
+    "experience": "Debuging"
+  },
+  {
+    "candidate_name": "Sultan",
+    "candidate_age": "28",
+    "DOB": "21/12/1991",
+    "experience": "Developing"
+  },
+  {
+    "candidate_name": "Haya",
+    "candidate_age": "22",
+    "DOB": "15/09/1996",
+    "experience": "Managing"
+  }
+]
