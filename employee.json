@@ -12,7 +12,7 @@
     "Phone": "0504444444",
     "Address": "AD",
     "Department": "HR",
-    "HigherD": "30/04/2010",
+    "hiringD": "30/04/2010",
     "line_mang": "Ahmed"
   },
   {
@@ -28,7 +28,7 @@
     "Phone": "0562323232",
     "Address": "Dubai",
     "Department": "Management",
-    "HigherD": "05/11/2012",
+    "hiringD": "05/11/2012",
     "line_mang": "Ali"
   },
   {
@@ -44,7 +44,7 @@
     "Phone": "0578989767",
     "Address": "Rak",
     "Department": "HR",
-    "HigherD": "09/11/2015",
+    "hiringD": "09/11/2015",
     "line_mang": "Mohamed"
   },
   {
@@ -60,7 +60,7 @@
     "Phone": "0508888858",
     "Address": "Fuj",
     "Department": "HR",
-    "HigherD": "16/08/2010",
+    "hiringD": "16/08/2010",
     "line_mang": "Abdulla"
   },
   {
@@ -76,7 +76,7 @@
     "Phone": "0505435435",
     "Address": "Shj",
     "Department": "IT",
-    "HigherD": "08/12/2018",
+    "hiringD": "08/12/2018",
     "line_mang": "Saeed"
   }
 ]
