@@ -5,11 +5,12 @@
     <title>ConnecTech</title>
     <link rel="stylesheet" href="./index.css">
     <script src="index.js"></script>
+    <script src="login.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/w3css/3/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
@@ -39,7 +40,7 @@
         </div>
         <div id="id01" class="modal">
 
-            <form class="modal-content animate" action="/action_page.php">
+            <form class="modal-content animate">
 
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close"
@@ -50,12 +51,12 @@
 
                 <div class="container">
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input id="username" type="text" placeholder="Enter Username" name="uname" required>
 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input id="password" type="password" placeholder="Enter Password" name="psw" required>
 
-                    <button type="submit">Login</button>
+                    <button type="submit" onclick="doLogin()">Login</button>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>
@@ -64,7 +65,7 @@
                 <div class="container" style="background-color:#f1f1f1">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'"
                         class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
+                    <div id="msg"></div>
                 </div>
             </form>
         </div>
@@ -73,6 +74,11 @@
 
     <section>
         <nav>
+            <div id="welcome" style="font-family: 'Dancing Script', cursive;">
+                <marquee behavior=“scroll” direction=“left”>WELCOME To ConnecTech ...</marquee>
+            </div>
+            <div id="gif"> <img id="imgGif" src="design.gif"></div>
+            <div id="navImage" class="Navimage"></div>
             <div id="navHeader"></div>
             <div id="container"></div>
         </nav>
@@ -95,7 +101,8 @@
                 <ul>
                     <li><a href=“#”>Employee Managemnt</a></li>
                     <li><a href=“#”>View profile</a></li>
-                    <li><a href=“#”>news</a></li>
+                    <li><a href=“#”>View Payslip</a></li>
+                    <li><a href=“#”>Add/View Request</a></li>
                 </ul>
             </li>
             <li>

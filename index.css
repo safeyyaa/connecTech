@@ -2,13 +2,23 @@
   box-sizing: border-box;
 }
 
+#gif {
+  padding-bottom: 74px;
+  /* font-family: 'Dancing Script', cursive; */
+}
+
+#welcome {
+  font-size: 30px;
+  color: #2867b9;
+}
+
 body {
   font-family: "Righteous", cursive;
 }
 
 header {
   background-color: rgb(255, 255, 255);
-  padding: 57px;
+  padding: 79px;
   color: rgb(0, 0, 0);
 }
 
@@ -52,12 +62,12 @@ section:after {
   width: 80%;
   height: 71px;
   box-sizing: border-box;
-  margin-top: -49px;
+  margin-top: -55px;
   text-align: center;
 }
 
 #header .logo img {
-  width: 90px;
+  width: 115px;
 }
 
 .sign-in {
@@ -163,6 +173,14 @@ footer > ul {
 footer > ul > li {
   width: 33%;
   float: left;
+}
+
+.Navimage {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 71%;
+  height: 100%;
 }
 
 #social_icons {
